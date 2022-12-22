@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="javascript:void(0);">
+      <h1>Tính điểm ĐH Khối D</h1>
+      <label for="toan">Môn Toán</label>
+      <input type="text" id="toan" />
+      <br />
+      <br />
+      <label for="van">Môn Văn</label>
+      <input type="text" id="van" />
+      <br />
+      <br />
+      <label for="anh">Môn Anh</label>
+      <input type="text" id="anh" />
+      <br />
+      <br />
+      <label for="kv">Khu vực</label>
+      <select name="kv" id="kv">
+        <option value="1">KV1</option>
+        <option value="2nt">KV2-NT</option>
+        <option value="2">KV2</option>
+        <option value="3">KV3</option>
+      </select>
+      <br />
+      <br />
+      <button onclick="cal()">Tính điểm</button>
+      <br />
+      <div id="show" style="color: red"></div>
+    </form>
+    <script>
+      let string = "Tổng điểm ĐH khối D của bạn là: "
+      let score = 0
+      let bonus = 0
+      let total = 0
+      function cal() {
+        let toan = parseInt(document.getElementById("toan").value)
+        let van = parseInt(document.getElementById("van").value)
+        let anh = parseInt(document.getElementById("anh").value)
+        score = toan + van + anh
+        let kv = document.getElementById("kv").value
+        switch (true) {
+          case kv == "1":
+            bonus = 0.75
+            break
+          case kv == "2nt":
+            bonus = 0.5
+            break
+          case kv == "2":
+            bonus = 0.25
+            break
+          case kv == "3":
+            bonus = 0
+            break
+        }
+        total = score + bonus
+        document.getElementById("show").innerHTML = string + total
+      }
+    </script>
+  </body>
+</html>
